@@ -37,7 +37,7 @@ variable "1" {
 }
 
 #accessing list variable with index
-output "1" {
+output "11" {
   value = var.1[0]
 }
 
@@ -50,6 +50,11 @@ variable "n" {
 }
 
 #Accessing Map variable #string map variable accessing with $ and its value with Double quotes
-output "n" {
+output "n1" {
   value = "course name - ${var.n["course"]}, Trainer name - ${var.n["trainer"]}"
 }
+
+#variable with without a value
+variable "c" {}
+#it will ask for value during execution
+
