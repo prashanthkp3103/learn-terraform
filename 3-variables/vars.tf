@@ -32,13 +32,13 @@ output "x1" {
 }
 
 #List variable #with different datatype
-variable "1" {
+variable "y1" {
   default = [10,20, "abc", false]
 }
 
 #accessing list variable with index
-output "11" {
-  value = var.1[0]
+output "y11" {
+  value = var.y1[0]
 }
 
 #Map variable [key,value]
