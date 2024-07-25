@@ -56,6 +56,7 @@ output "n1" {
 
 #variable with without a value
 variable "c" {
+#reason to specify type is ,terraform bydefault considers string
   type = number
 }
 #it will ask for value during execution
