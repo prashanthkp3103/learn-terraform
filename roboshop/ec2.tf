@@ -9,7 +9,7 @@ resource "aws_instance" "frontend" {
 }
 
 resource "aws_route53_record" "frontend" {
-  zone_id = Z0668859214N41P8Y7GLH
+  zone_id = "Z0668859214N41P8Y7GLH"
   name    = "meppk.xyz"
   type    = "A"
   ttl     = 15
@@ -28,7 +28,7 @@ resource "aws_instance" "mongo" {
 }
 
 resource "aws_route53_record" "mongo" {
-  zone_id = Z0668859214N41P8Y7GLH
+  zone_id = "Z0668859214N41P8Y7GLH"
   name    = "meppk.xyz"
   type    = "A"
   ttl     = 15
@@ -47,7 +47,7 @@ resource "aws_instance" "catalogue" {
 }
 
 resource "aws_route53_record" "catalogue" {
-  zone_id = Z0668859214N41P8Y7GLH
+  zone_id = "Z0668859214N41P8Y7GLH"
   name    = "meppk.xyz"
   type    = "A"
   ttl     = 15
