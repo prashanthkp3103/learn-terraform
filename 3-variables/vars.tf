@@ -58,3 +58,10 @@ output "n1" {
 variable "c" {}
 #it will ask for value during execution
 
+#accessing variable
+output "c" {
+  value = var.c
+}
+
+#terraform init; terraform apply --auto-approve -var c=100
+
