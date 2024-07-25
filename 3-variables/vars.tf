@@ -55,7 +55,9 @@ output "n1" {
 }
 
 #variable with without a value
-variable "c" {}
+variable "c" {
+  type = number
+}
 #it will ask for value during execution
 
 #accessing variable
