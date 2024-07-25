@@ -27,6 +27,14 @@ resource "aws_instance" "mongo" {
   }
 }
 
+resource "aws_route53_record" "mongo" {
+  zone_id = Z0668859214N41P8Y7GLH
+  name    = "meppk.xyz"
+  type    = "A"
+  ttl     = 15
+  records = [aws_instance.mongo.private_ip]
+}
+
 
 resource "aws_instance" "catalogue" {
   ami           = "ami-041e2ea9402c46c32"
@@ -36,4 +44,12 @@ resource "aws_instance" "catalogue" {
   tags = {
     Name = "catalogue.dev"
   }
+}
+
+resource "aws_route53_record" "catalogue" {
+  zone_id = Z0668859214N41P8Y7GLH
+  name    = "meppk.xyz"
+  type    = "A"
+  ttl     = 15
+  records = [aws_instance.catalogue.private_ip]
 }
