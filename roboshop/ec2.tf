@@ -37,7 +37,7 @@ resource "aws_route53_record" "frontend" {
 
 resource "aws_instance" "mongo" {
   ami           = var.ami
-  vpc_security_group_ids = var.vpc_security_group_ids
+  vpc_security_group_ids = [var.vpc_security_group_ids]
   instance_type = var.instance_type
 
   tags = {
@@ -56,7 +56,7 @@ resource "aws_route53_record" "mongo" {
 
 resource "aws_instance" "catalogue" {
   ami           = var.ami
-  vpc_security_group_ids = var.vpc_security_group_ids
+  vpc_security_group_ids = [var.vpc_security_group_ids]
   instance_type = var.instance_type
 
   tags = {
