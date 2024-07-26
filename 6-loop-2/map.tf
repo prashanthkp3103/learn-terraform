@@ -23,3 +23,11 @@ variable "components" {
 resource "null_resource" "ppk" {
   for_each  = var.components
 }
+
+variable "instances" {
+  default = {
+    frontend = {}
+    mongo = {}
+    catalogue = {}
+  }
+}
