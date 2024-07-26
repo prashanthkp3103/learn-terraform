@@ -16,3 +16,8 @@ data "aws_security_groups" "sg" {
   }
 
 }
+
+data "aws_route53_zone" "zone" {
+  name         = "meppk.xyz"
+  private_zone = false
+}
