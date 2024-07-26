@@ -17,3 +17,7 @@ variable "zoneid" {
 variable "domain_name" {
   default = "meppk.xyz"
 }
+
+variable "components" {
+  default = ["frontend","mongo","catalogue"]
+}
