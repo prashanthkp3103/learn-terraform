@@ -10,7 +10,7 @@ resource "aws_instance" "instance" {
 }
 resource "aws_route53_record" "frontend" {
   zone_id = data.aws_route53_zone.zone.zone_id
-  name    = "frontend.dev.${var.domain_name}"
+  name    = "${var.components[count.index]}dev.${var.domain_name}"
   type    = "A"
   ttl     = 15
   records = [aws_instance.instance[count.index].private_ip]
