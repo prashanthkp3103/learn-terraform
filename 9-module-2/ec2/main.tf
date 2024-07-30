@@ -7,3 +7,8 @@ resource "aws_instance" "frontend" {
     Name = "terraform-tes"
   }
 }
+
+
+output "private_ip" {
+  value = "aws_instance.frontend.private_ip"
+}
