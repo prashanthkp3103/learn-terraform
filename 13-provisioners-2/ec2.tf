@@ -7,12 +7,28 @@ resource "aws_instance" "instance" {
   tags = {
     Name = "${each.key}dev"
   }
-  #Here if provisioner fails resource(ec2) is being destroying
+
+}
+
+
+resource "aws_route53_record" "record" {
+  for_each = var.components
+  zone_id = data.aws_route53_zone.zone.zone_id
+  name    = "${each.key}dev.${var.domain_name}"
+  type    = "A"
+  ttl     = 15
+  records = [aws_instance.instance[each.key].private_ip]
+}
+#resource creation is completely isolated and provisioner is isolated ,it will execute only after above as we have depends_on
+
+resource "null_resource" "ansible" {
+  depends_on = [aws_route53_record.record]
+  for_each = var.components
   provisioner "remote-exec" {
     connection {
       user  = "ec2-user"
       password = "DevOps321"
-      host  = self.private_ip
+      host  = aws_instance.instance[each.key].private_ip
     }
     #from here execution happens with inline
     inline = [
@@ -21,16 +37,6 @@ resource "aws_instance" "instance" {
 
     ]
   }
-}
-
-
-resource "aws_route53_record" "frontend" {
-  for_each = var.components
-  zone_id = data.aws_route53_zone.zone.zone_id
-  name    = "${each.key}dev.${var.domain_name}"
-  type    = "A"
-  ttl     = 15
-  records = [aws_instance.instance[each.key].private_ip]
 }
 
 
