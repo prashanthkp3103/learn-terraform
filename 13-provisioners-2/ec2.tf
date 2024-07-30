@@ -31,6 +31,8 @@ resource "null_resource" "ansible" {
       password = "DevOps321"
       host  = aws_instance.instance[each.key].private_ip
     }
+
+
     #from here execution happens with inline
     inline = [
       "sudo pip-3.11 install ansible",
