@@ -10,7 +10,7 @@ resource "aws_instance" "instance" {
   provisioner "remote-exec" {
     connection {
       user  = "ec2-user"
-      password = "Devops321"
+      password = "DevOps321"
       host  = self.private_ip
     }
     #from here execution happens with inline
