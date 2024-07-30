@@ -16,7 +16,7 @@ resource "aws_instance" "instance" {
     #from here execution happens with inline
     inline = [
       "sudo pip-3.11 install ansible",
-      "ansible-pull -i localhost, -U https://github.com/prashanthkp3103/roboshop-ansible/main.yml -e env=dev -e role_name=${each.key}"
+      "ansible-pull -i localhost, -U https://github.com/prashanthkp3103/roboshop-ansible main.yml -e env=dev -e role_name=${each.key}"
 
     ]
   }
