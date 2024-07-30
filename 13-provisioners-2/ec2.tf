@@ -11,7 +11,7 @@ resource "aws_instance" "instance" {
 }
 
 
-resource "aws_route53_record" "record" {
+resource "aws_route53_record" "dns_record" {
   for_each = var.components
   zone_id = data.aws_route53_zone.zone.zone_id
   name    = "${each.key}dev.${var.domain_name}"
@@ -22,8 +22,9 @@ resource "aws_route53_record" "record" {
 #resource creation is completely isolated and provisioner is isolated ,it will execute only after above as we have depends_on
 
 resource "null_resource" "ansible" {
-  depends_on = [aws_route53_record.record]
+  depends_on = [aws_route53_record.dns_record]
   for_each = var.components
+
   provisioner "remote-exec" {
     connection {
       user  = "ec2-user"
@@ -33,7 +34,7 @@ resource "null_resource" "ansible" {
     #from here execution happens with inline
     inline = [
       "sudo pip-3.11 install ansible",
-      "ansible-pull -i localhost, -U https://github.com/prashanthkp3103/Latest-Ansible-Roboshop.git main.yml -e env=dev -e role_name=${each.key}"
+      "ansible-pull -i localhost, -U https://github.com/prashanthkp3103/Latest-Ansible-Roboshop main.yml -e env=dev -e role_name=${each.key}"
 
     ]
   }
