@@ -19,23 +19,40 @@ variable "domain_name" {
 }
 
 
+# variable "components" {
+#   default = {
+#     frontend = {
+#       #instance_type = "t3.micro"
+#     }
+#     mongo = {
+#       #instance_type = "t3.small"
+#     }
+#     catalogue = {
+#       #instance_type = "t3.micro"
+#     }
+#     redis = {}
+#     mysql = {}
+#     user = {}
+#     cart = {}
+#     shipping = {}
+#     payment = {}
+#     dispatch = {}
+#     rabbitmq = {}
+#   }
+# }
+
 variable "components" {
   default = {
-    frontend = {
-      #instance_type = "t3.micro"
-    }
-    mongo = {
-      #instance_type = "t3.small"
-    }
-    catalogue = {
-      #instance_type = "t3.micro"
-    }
-    redis = {}
-    mysql = {}
-    user = {}
-    cart = {}
-    shipping = {}
-    payment = {}
-    dispatch = {}
+    frontend  = {}
+    mongo     = {}
+    catalogue = {}
+    redis     = {}
+    rabbitmq  = {}
+    mysql     = {}
+    user      = {}
+    cart      = {}
+    shipping  = {}
+    payment   = {}
+    dispatch  = {}
   }
 }
