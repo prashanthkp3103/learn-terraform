@@ -5,19 +5,19 @@ data "aws_ami" "ami" {
 
 }
 
-output "ami" {
-  value = data.aws_ami.ami
-}
-
-data "aws_security_groups" "sg" {
-  filter {
-    name = "group-name"
-    values = ["*launch-wizard-1*"]
-  }
-
-}
-
-data "aws_route53_zone" "zone" {
-  name         = "meppk.xyz"
-  private_zone = false
-}
+# output "ami" {
+#   value = data.aws_ami.ami
+# }
+#
+# data "aws_security_groups" "sg" {
+#   filter {
+#     name = "group-name"
+#     values = ["*launch-wizard-1*"]
+#   }
+#
+# }
+#
+# data "aws_route53_zone" "zone" {
+#   name         = "meppk.xyz"
+#   private_zone = false
+# }
